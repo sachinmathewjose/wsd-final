@@ -1,18 +1,13 @@
 <?php
+/*
+ * Finalized**
+ */
 class Manage
-{
+{//Functions for loading core, controller, model, collections and routes
+
     public static function core($class)
     {
-
-//this is useful to see what class and namespace is being asked for
-//echo $class . '<br>';
-
-
         $path = 'core/' . str_replace('\\', '/', $class) . '.php';
-//this is useful to see what path is being asked for
-
-//echo $path . '<br>';
-
         if (is_file($path)) {
             include $path;
             return;
@@ -21,13 +16,7 @@ class Manage
 
     public static function controllers($class)
     {
-
-//this is useful to see what class and namespace is being asked for
-//echo $class . '<br>';
         $path = 'controllers/' . str_replace('\\', '/', $class) . '.php';
-//this is useful to see what path is being asked for
-
-//echo $path . '<br>';
         if (is_file($path)) {
             include $path;
             return;
@@ -36,13 +25,7 @@ class Manage
 
     public static function models($class)
     {
-
-//this is useful to see what class and namespace is being asked for
-//echo $class . '<br>';
         $path = 'models/' . str_replace('\\', '/', $class) . '.php';
-//this is useful to see what path is being asked for
-
-//echo $path . '<br>';
         if (is_file($path)) {
             include $path;
             return;
@@ -51,13 +34,7 @@ class Manage
 
     public static function collections($class)
     {
-
-//this is useful to see what class and namespace is being asked for
-//echo $class . '<br>';
         $path = 'collections/' . str_replace('\\', '/', $class) . '.php';
-//this is useful to see what path is being asked for
-
-//echo $path . '<br>';
         if (is_file($path)) {
             include $path;
             return;
@@ -66,13 +43,7 @@ class Manage
 
     public static function routes($class)
     {
-
-//this is useful to see what class and namespace is being asked for
-//echo $class . '<br>';
         $path = 'routes/' . str_replace('\\', '/', $class) . '.php';
-//this is useful to see what path is being asked for
-
-//echo $path . '<br>';
         if (is_file($path)) {
             include $path;
             return;
@@ -80,6 +51,7 @@ class Manage
     }
 }
 
+// registering thse functions with autoloader
 spl_autoload_register(array('Manage', 'routes'));
 spl_autoload_register(array('Manage', 'controllers'));
 spl_autoload_register(array('Manage', 'collections'));

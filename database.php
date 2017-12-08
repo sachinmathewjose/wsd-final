@@ -1,5 +1,7 @@
 <?php
-
+/*
+ * Finalized**
+ */
 define('DATABASE', 'sj555');
 define('USERNAME', 'sj555');
 define('PASSWORD', 'mYSZqqZ9S');
