@@ -7,7 +7,7 @@ class controller
     //Connect phpstorm to controller
     static public function getTemplate($template, $data = NULL)
     {
-        $template = 'pages/' . $template . '.php';
+        $template = 'pages/html/' . $template . '.php';
         //The $data array can be used inside the page to pass value to page
         include $template;
     }
