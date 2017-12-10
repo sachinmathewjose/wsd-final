@@ -55,11 +55,10 @@ class accountsController extends http\controller
             //Turn the set password function into a static method on a utility class.
             $user->password = $user->setPassword($_POST['password']);
             $user->save();
-
-            //you may want to send the person to a
-            // login page or create a session and log them in
-            // and then send them to the task list page and a link to create tasks
-            header("Location: index.php?page=accounts&action=all");
+            if (isset($user->id)) {
+                $_SESSION['userID'] = $user->id;
+                header("Location: index.php?page=accounts&action=displaytasks");
+            }
 
         } else {
             //You can make a template for errors called error.php
@@ -69,7 +68,6 @@ class accountsController extends http\controller
             self::getTemplate('error', $error);
 
         }
-
     }
 
     public static function edit()
@@ -120,22 +118,42 @@ class accountsController extends http\controller
 
             if($user->checkPassword($_POST['password']) == TRUE) {
 
-                echo 'login';
-
-                session_start();
+               // echo 'login';
+                //session_start();
                 $_SESSION["userID"] = $user->id;
 
                 //forward the user to the show all todos page
-                print_r($_SESSION);
+                header("Location: index.php?page=accounts&action=displaytasks");
+
             } else {
                 echo 'password does not match';
             }
-
         }
-
-
-
-
     }
 
+    public static function displaytasks()
+    {
+        if(key_exists('userID',$_SESSION)) {
+            $userID = $_SESSION['userID'];
+        } else {
+            echo 'you must be logged in to view tasks';
+        }
+        $userID = $_SESSION['userID'];
+        $data['account'] = accounts::findone($userID);
+        $table = NULL;
+        $table = todos::findTasksbyID($userID);
+        if ($table != NULL)
+            $data['table'] =$table;
+        self::getTemplate('task_view', $data);
+    }
+
+    public static function logout()
+    {
+        if(key_exists('userID',$_SESSION)) {
+            unset($_SESSION['userID']);
+        } else {
+            echo 'not logged in';
+        }
+        header('Location: index.php');
+    }
 }

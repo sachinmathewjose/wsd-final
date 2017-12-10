@@ -9,6 +9,9 @@ include_once "autoload.php";
 //Load database credentials
 include_once "database.php";
 
+//We need to start the session in every part of the program
+session_start();
+
 //this starts the program as a static.  Start tracing the program from here following the classes and methods being called
 $response = http\processRequest::createResponse();
 

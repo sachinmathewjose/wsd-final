@@ -13,7 +13,6 @@ final class todo extends database\model
 
     public static function getTablename()
     {
-
         $tableName = 'todos';
         return $tableName;
     }

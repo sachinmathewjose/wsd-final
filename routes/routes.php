@@ -2,7 +2,6 @@
 
 class routes
 {
-
     public static function getRoute($request_method,$page,$action)
     {
         //For homepage GET
@@ -30,6 +29,8 @@ class routes
         $routes[] = self::create('GET','register','accounts','accountsController','register');
         //this handles the reg post to create the user
         $routes[] = self::create('POST','register','accounts','accountsController','store');
+        $routes[] = self::create('GET','displaytasks','accounts','accountsController','displaytasks');
+        $routes[] = self::create('GET','logout','accounts','accountsController','logout');
 
         $foundRoute = NULL;
         foreach ($routes as $route) {
@@ -38,7 +39,6 @@ class routes
                 break;
             }
         }
-
         return $foundRoute;
     }
 

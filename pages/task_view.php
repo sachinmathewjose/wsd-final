@@ -16,13 +16,15 @@
 </head>
 
 <body>
-<h1>All Accounts</h1>
-
-<h1> HI</h1>
-
+<h1><a href="index.php?page=accounts&action=logout">LOG OUT</a></h1>
 <?php
 //this is how you print something
-print utility\htmlTable::genarateTableFromMultiArray($data);
+if (isset($data['account'])) {
+    print utility\htmlTable::generateTableFromOneRecord($data['account']);
+}if (isset($data['table'])) {
+    print utility\htmlTable::genarateTableFromMultiArray($data['table'], 'tasks');
+}
+
 ?>
 
 

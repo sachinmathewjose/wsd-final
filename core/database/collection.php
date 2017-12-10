@@ -4,7 +4,6 @@ namespace database;
 
 abstract class collection
 {
-
     //factory to make model
     static public function create()
     {
@@ -21,11 +20,8 @@ abstract class collection
 
     //you can use this to run other queries in on classes that extend the collection class because this is protected
     protected static function getResults($sql, $parameters = null) {
-
-
         if (!is_array($parameters)) {
             $parameters = (array) $parameters;
-
         }
         $db = dbConn::getConnection();
         $statement = $db->prepare($sql);
@@ -37,7 +33,6 @@ abstract class collection
         if ($statement->rowCount() > 0) {
             $statement->setFetchMode(\PDO::FETCH_CLASS, $class);
             $recordsSet = $statement->fetchAll();
-
         } else {
             $recordsSet = NULL;
 

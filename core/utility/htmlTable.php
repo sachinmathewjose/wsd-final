@@ -5,9 +5,8 @@ namespace utility;
 
 class htmlTable
 {
-    public static function genarateTableFromMultiArray($array)
+    public static function genarateTableFromMultiArray($array, $referingPage = NULL)
     {
-
         $tableGen = '<table border="1"cellpadding="10">';
         $tableGen .= '<tr>';
         //this grabs the first element of the array so we can extract the field headings for the table
@@ -15,7 +14,9 @@ class htmlTable
         $fieldHeadings = get_object_vars($fieldHeadings);
         $fieldHeadings = array_keys($fieldHeadings);
         //this gets the page being viewed so that the table routes requests to the correct controller
-        $referingPage = $_REQUEST['page'];
+        if ($referingPage == NULL) {
+            $referingPage = $_REQUEST['page'];
+        }
         foreach ($fieldHeadings as $heading) {
             $tableGen .= '<th>' . $heading . '</th>';
         }
@@ -31,9 +32,7 @@ class htmlTable
             }
             $tableGen .= '</tr>';
         }
-
         $tableGen .= '</table>';
-
         return $tableGen;
     }
 
