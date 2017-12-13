@@ -21,6 +21,7 @@ final class account extends \database\model
     //to find a users tasks you need to create a method here.  Use $this->id to get the usersID For the query
     public static function findTasks()
     {
+        //sachin do not need this function since we have it in todos
         //I am temporarily putting a findall here but you should add a method to todos that takes the USER ID and returns their tasks.
         $records = todos::findAll();
         print_r($records);

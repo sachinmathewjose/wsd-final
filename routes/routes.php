@@ -18,7 +18,8 @@ class routes
         //GET METHOD index.php?page=accounts&action=show
         $routes[] = self::create('GET','show','accounts','accountsController','show');
         //YOU WILL NEED TO ADD MORE ROUTES
-        $routes[] = self::create('POST','delete','tasks','tasksController','delete');;
+        $routes[] = self::create('GET','delete','tasks','tasksController','delete');
+        $routes[] = self::create('GET','edit','tasks','tasksController','edit');
         $routes[] = self::create('POST','delete','accounts','accountsController','delete');
         $routes[] = self::create('GET','edit','accounts','accountsController','edit');
         $routes[] = self::create('POST','save','accounts','accountsController','save');
@@ -26,9 +27,9 @@ class routes
         $routes[] = self::create('GET','register','accounts','accountsController','register');
         //this handles the reg post to create the user
         $routes[] = self::create('POST','register','accounts','accountsController','store');
-        $routes[] = self::create('GET','displaytasks','accounts','accountsController','displaytasks');
+        $routes[] = self::create('GET','displaytasks','accounts','accountsController','displayuserstasks');
         $routes[] = self::create('GET','logout','accounts','accountsController','logout');
-
+        $routes[] = self::create('POST','create','tasks','tasksController','create');
         $foundRoute = NULL;
         foreach ($routes as $route) {
             if ($route->page == $page && $route->http_method == $request_method && $route->action == $action) {

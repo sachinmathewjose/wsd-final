@@ -32,22 +32,38 @@ class tasksController extends http\controller
 
     public static function create()
     {
-        print_r($_POST);
+        $task = new todo();
+        if(isset($_POST['id'])) {
+            $task->id = $_POST['id'];
+        }
+        $task->message = $_POST['message'];
+        $task->createddate = $_POST['startdate'];
+        $task->duedate = $_POST['enddate'];
+        $task->ownerid = $_SESSION['userID'];
+        if (isset($_POST['isdone'])) {
+            $task->isdone = 1;
+        }
+        else {
+            $task->isdone = 0;
+        }
+        $task->save();
+        if (isset($task->id)) {
+            header("Location: index.php?page=accounts&action=displaytasks");
+        }
+        else{
+            echo 'data not saved';
+        }
     }
 
     //this is the function to view edit record form
     public static function edit()
     {
-        $record = todos::findOne($_REQUEST['id']);
-
-        self::getTemplate('edit_task', $record);
-
+        $id =$_REQUEST['id'];
+        header("Location:index.php?page=accounts&action=displaytasks&id=$id");
     }
-
     //this would be for the post for sending the task edit form
     public static function store()
     {
-
 
         $record = todos::findOne($_REQUEST['id']);
         $record->body = $_REQUEST['body'];
@@ -71,9 +87,10 @@ class tasksController extends http\controller
     public static function delete()
     {
         $record = todos::findOne($_REQUEST['id']);
-        $record->delete();
-        print_r($_POST);
-
+        if ($record->ownerid == $_SESSION['userID']) {
+            $record->delete();
+        }
+        header("Location:index.php?page=accounts&action=displaytasks");
     }
 
 }

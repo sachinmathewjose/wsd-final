@@ -3,7 +3,6 @@
 final class todo extends database\model
 {
     public $id;
-    public $owneremail;
     public $ownerid;
     public $createddate;
     public $duedate;

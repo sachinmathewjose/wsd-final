@@ -53,6 +53,9 @@ class accountsController extends http\controller
                 $_SESSION['userID'] = $user->id;
                 header("Location: index.php?page=accounts&action=displaytasks");
             }
+            else{
+                echo 'data not saved';
+            }
 
         } else {
             $_SESSION['error'] = 'account already exists. Please login';
@@ -89,7 +92,7 @@ class accountsController extends http\controller
         header("Location: index.php?page=accounts&action=all");
     }
 
-    public static function displaytasks()
+    public static function displayuserstasks()
     {
         if(key_exists('userID',$_SESSION)) {
             $userID = $_SESSION['userID'];
@@ -102,6 +105,9 @@ class accountsController extends http\controller
         $table = todos::findTasksbyID($userID);
         if ($table != NULL)
             $data['table'] =$table;
+        if (isset($_REQUEST['id'])) {
+            $data['edit'] = $_REQUEST['id'];
+        }
         self::getTemplate('task_view', $data);
     }
 
