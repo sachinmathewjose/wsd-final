@@ -40,7 +40,6 @@ class accountsController extends http\controller
     {
         $user = accounts::findUserbyEmail($_REQUEST['email']);
 
-
         if ($user == FALSE) {
             $user = new account();
             $user->email = $_POST['email'];
@@ -55,9 +54,11 @@ class accountsController extends http\controller
             //Turn the set password function into a static method on a utility class.
             $user->password = $user->setPassword($_POST['password']);
             $user->save();
+            // automatically login after account creation
             if (isset($user->id)) {
                 $_SESSION['userID'] = $user->id;
                 header("Location: index.php?page=accounts&action=displaytasks");
+                echo "reached...";
             }
 
         } else {
