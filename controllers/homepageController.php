@@ -24,8 +24,6 @@ class homepageController extends http\controller
 
     public static function create()
     {
-
-
 //I just put a $_POST here but this is where you would put the code to add a record
         print_r($_POST);
     }

@@ -13,6 +13,15 @@
 </head>
 
 <body>
+<?php
+  if(isset($_SESSION['error'])) {
+      echo '<div class="alert" style="text-align:center">';
+      echo '<span class="closebtn" onclick="this.parentElement.style.display=\'none\';">&times;</span>';
+      echo $_SESSION['error'];
+      echo '</div>';
+      unset($_SESSION['error']);
+  }
+?>
 <section id="login">
     <div class="container">
         <div class="row">
