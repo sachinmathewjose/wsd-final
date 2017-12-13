@@ -7,7 +7,7 @@ class routes
         //For homepage GET
         $routes[] = self::create('GET','show','homepage','homepageController','show');
         //For homepage post POST
-        $routes[] = self::create('POST','create','homepage','homepageController','create');
+        $routes[] = self::create('POST','login','homepage','homepageController','login');
         //GET METHOD index.php?page=tasks&action=show
         $routes[] = self::create('GET','show','tasks','tasksController','show');
         //you need to add routes for create, edit, and delete
@@ -17,9 +17,6 @@ class routes
         $routes[] = self::create('GET','all','accounts','accountsController','all');
         //GET METHOD index.php?page=accounts&action=show
         $routes[] = self::create('GET','show','accounts','accountsController','show');
-        //This goes in the login form action method
-        //GET METHOD index.php?page=accounts&action=login
-        $routes[] = self::create('POST','login','accounts','accountsController','login');
         //YOU WILL NEED TO ADD MORE ROUTES
         $routes[] = self::create('POST','delete','tasks','tasksController','delete');;
         $routes[] = self::create('POST','delete','accounts','accountsController','delete');

@@ -28,7 +28,7 @@
             <div class="col-xs-12">
                 <div class="form-wrap">
                     <h1>Log in with your email account</h1>
-                    <form role="form" action="index.php?page=accounts&action=login" method="POST" id="login-form">
+                    <form role="form" action="index.php?page=homepage&action=login" method="POST" id="login-form">
                         <div class="form-group">
                             <label for="email" class="sr-only">Email</label>
                             <input type="email" name="email" id="email" class="form-control" placeholder="somebody@example.com">
