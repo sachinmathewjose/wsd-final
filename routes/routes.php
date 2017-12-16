@@ -20,7 +20,7 @@ class routes
         //YOU WILL NEED TO ADD MORE ROUTES
         $routes[] = self::create('GET','delete','tasks','tasksController','delete');
         $routes[] = self::create('GET','edit','tasks','tasksController','edit');
-        $routes[] = self::create('POST','delete','accounts','accountsController','delete');
+        $routes[] = self::create('GET','delete','accounts','accountsController','delete');
         $routes[] = self::create('GET','edit','accounts','accountsController','edit');
         $routes[] = self::create('POST','save','accounts','accountsController','save');
         //this is the route for the reg form
