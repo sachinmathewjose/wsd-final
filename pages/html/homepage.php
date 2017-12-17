@@ -2,10 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>The Task List</title>
-    <meta name="description" content="Homepage for wsd final project: ">
-    <meta name="author" content="Sachin Mathew Jose">
-
+    <title>TO-DO</title>
     <link rel="stylesheet" href="pages/css/homepage.css">
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css">
@@ -28,27 +25,32 @@
             <div class="col-xs-12">
                 <div class="form-wrap">
                     <h1>Log in with your email account</h1>
-                    <form role="form" action="index.php?page=homepage&action=login" method="POST" id="login-form">
+                    <form role="form" action="index.php?page=homepage&action=login"
+                          method="POST" id="login-form">
                         <div class="form-group">
                             <label for="email" class="sr-only">Email</label>
-                            <input type="email" name="email" id="email" class="form-control" placeholder="somebody@example.com">
+                            <input type="email" name="email" id="email"
+                                   class="form-control" placeholder="somebody@example.com">
                         </div>
                         <div class="form-group">
                             <label for="key" class="sr-only">Password</label>
-                            <input type="password" name="password" id="key" class="form-control" placeholder="Password">
+                            <input type="password" name="password" id="key"
+                                   class="form-control" placeholder="Password">
                         </div>
                         <div class="checkbox">
                             <span class="character-checkbox" onclick="showPassword()"></span>
                             <span class="label">Show password</span>
                         </div>
-                        <input type="submit" id="btn-login" class="btn btn-custom btn-lg btn-block" value="Log in">
+                        <input type="submit" id="btn-login" class="btn btn-custom btn-lg btn-block"
+                               value="Log in">
                     </form>
-                    <p class="register">New user?<a href="index.php?page=accounts&action=register" data-toggle="modal" data-target=".forget-modal">Register</></p>
+                    <p class="register">New user?<a href="index.php?page=accounts&action=register"
+                                                    data-toggle="modal" data-target=".forget-modal">Register</></p>
                     <hr>
                 </div>
-            </div> <!-- /.col-xs-12 -->
-        </div> <!-- /.row -->
-    </div> <!-- /.container -->
+            </div>
+        </div>
+    </div>
 </section>
 
 <footer id="footer">
@@ -63,17 +65,6 @@
 </footer>
 <h1></h1>
 <h1></h1>
-<!--
-<form action="index.php?page=accounts&action=login" method="POST">
-    <div class="container">
-        <label><b>Username</b></label>
-        <input type="text" placeholder="Enter Username" name="email" required>
-        <label><b>Password</b></label>
-        <input type="password" placeholder="Enter Password" name="password" required>
-        <button type="submit">Login</button>
-    </div>
-</form>
--->
 <script src="pages/script/homepage.js"></script>
 </body>
 </html>

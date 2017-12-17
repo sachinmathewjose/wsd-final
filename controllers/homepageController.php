@@ -25,7 +25,8 @@ class homepageController extends http\controller
     {
         $user = accounts::findUserbyEmail($_REQUEST['email']);
         if ($user == FALSE) {
-            echo 'user not found';
+            $_SESSION["error"] = 'User not found.';
+            header("Location: index.php");
         } else {
             if($user->checkPassword($_POST['password']) == TRUE) {
                 $_SESSION["userID"] = $user->id;

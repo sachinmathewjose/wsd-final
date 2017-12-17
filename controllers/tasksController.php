@@ -55,12 +55,12 @@ class tasksController extends http\controller
         }
     }
 
-    //this is the function to view edit record form
-    public static function edit()
-    {
-        $id =$_REQUEST['id'];
-        header("Location:index.php?page=accounts&action=displaytasks&id=$id");
-    }
+//    //this is the function to view edit record form
+//    public static function edit()
+//    {
+//        $id =$_REQUEST['id'];
+//        header("Location:index.php?page=accounts&action=displaytasks&id=$id");
+//    }
     //this would be for the post for sending the task edit form
     public static function store()
     {
