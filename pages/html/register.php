@@ -25,6 +25,17 @@
             <legend><center><h2><b>Registration Form</b></h2></center></legend><br>
 
             <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label">E-Mail</label>
+                <div class="col-md-4 inputGroupContainer">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+                        <input name="email" placeholder="E-Mail Address" class="form-control"  type="text">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Text input-->
 
             <div class="form-group">
                 <label class="col-md-4 control-label">First Name</label>
@@ -95,17 +106,6 @@
                     <div class="input-group">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
                         <input name="confirm_password" placeholder="Confirm Password" class="form-control"  type="password">
-                    </div>
-                </div>
-            </div>
-
-            <!-- Text input-->
-            <div class="form-group">
-                <label class="col-md-4 control-label">E-Mail</label>
-                <div class="col-md-4 inputGroupContainer">
-                    <div class="input-group">
-                        <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-                        <input name="email" placeholder="E-Mail Address" class="form-control"  type="text">
                     </div>
                 </div>
             </div>

@@ -4,6 +4,3 @@ function deletetask(taskid) {
 function edittask(taskid) {
     window.location = "index.php?page=tasks&action=edit&id="+taskid;
 };
-function deleteaccountd() {
-    window.location = "hihi.php";
-};

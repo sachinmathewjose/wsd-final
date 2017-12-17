@@ -65,12 +65,12 @@ class accountsController extends http\controller
 
     public static function edit()
     {
-        $record = accounts::findOne($_REQUEST['id']);
+        $record = accounts::findOne($_SESSION['userID']);
         self::getTemplate('edit_account', $record);
     }
 //this is used to save the update form data
     public static function save() {
-        $user = accounts::findOne($_REQUEST['id']);
+        $user = accounts::findOne($_SESSION['userID']);
         $user->email = $_POST['email'];
         $user->fname = $_POST['fname'];
         $user->lname = $_POST['lname'];
@@ -79,6 +79,21 @@ class accountsController extends http\controller
         $user->gender = $_POST['gender'];
         $user->save();
         header("Location: index.php");
+    }
+    public static function editpassword() {
+        $user = accounts::findOne($_SESSION['userID']);
+        if ($user == FALSE) {
+            echo 'user not found';
+        } else {
+            if($user->checkPassword($_POST['old_password']) == TRUE) {
+                $user->password = $user->setPassword($_POST['password']);
+                $user->save();
+                header("Location: index.php?page=accounts&action=displaytasks");
+            } else {
+                $_SESSION["error"] = 'email or password doesn\'t match';
+                header("Location: index.php?page=accounts&action=edit");
+            }
+        }
     }
 
     public static function delete()
@@ -91,7 +106,7 @@ class accountsController extends http\controller
         header("Location: index.php");
     }
 
-    public static function displayuserstasks()
+    public static function displaytasks()
     {
         if(key_exists('userID',$_SESSION)) {
             $userID = $_SESSION['userID'];

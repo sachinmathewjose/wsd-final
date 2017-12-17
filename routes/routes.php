@@ -23,11 +23,12 @@ class routes
         $routes[] = self::create('GET','delete','accounts','accountsController','delete');
         $routes[] = self::create('GET','edit','accounts','accountsController','edit');
         $routes[] = self::create('POST','save','accounts','accountsController','save');
+        $routes[] = self::create('POST','editpassword','accounts','accountsController','editpassword');
         //this is the route for the reg form
         $routes[] = self::create('GET','register','accounts','accountsController','register');
         //this handles the reg post to create the user
         $routes[] = self::create('POST','register','accounts','accountsController','store');
-        $routes[] = self::create('GET','displaytasks','accounts','accountsController','displayuserstasks');
+        $routes[] = self::create('GET','displaytasks','accounts','accountsController','displaytasks');
         $routes[] = self::create('GET','logout','accounts','accountsController','logout');
         $routes[] = self::create('POST','create','tasks','tasksController','create');
         $foundRoute = NULL;

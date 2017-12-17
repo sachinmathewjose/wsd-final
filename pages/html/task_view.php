@@ -38,7 +38,7 @@ if (isset($data['account'])) {
                     <span class="icon-cog icon-white"></span><span class="caret"></span>
                 </a>
                 <ul class="dropdown-menu">
-                    <li><a href="index.php?page=accounts&action=edit<?php if($account->id) {echo "".$account->email;}?>" >
+                    <li><a href="index.php?page=accounts&action=edit<?php if($account->id) {echo "&id=".$account->id;}?>" >
                             <span class="icon-wrench" ></span> Modify</a></li>
                     <li><a href="index.php?page=accounts&action=logout"><span class="glyphicon glyphicon-off"></span> Logout</a></li>
                 </ul>
