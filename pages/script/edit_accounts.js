@@ -119,3 +119,6 @@ $(document).ready(function() {
 function canceledit() {
     window.location = "index.php?page=accounts&action=displaytasks";
 };
+function deleteaccount() {
+    window.location = "index.php?page=accounts&action=delete";
+};

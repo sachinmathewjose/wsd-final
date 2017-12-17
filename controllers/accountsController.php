@@ -78,6 +78,7 @@ class accountsController extends http\controller
         $user->birthday = $_POST['birthday'];
         $user->gender = $_POST['gender'];
         $user->save();
+        $_SESSION["error"] = 'profile updated successfully';
         header("Location: index.php");
     }
     public static function editpassword() {
@@ -88,9 +89,10 @@ class accountsController extends http\controller
             if($user->checkPassword($_POST['old_password']) == TRUE) {
                 $user->password = $user->setPassword($_POST['password']);
                 $user->save();
+                $_SESSION["error"] = 'password updated successfully';
                 header("Location: index.php?page=accounts&action=displaytasks");
             } else {
-                $_SESSION["error"] = 'email or password doesn\'t match';
+                $_SESSION["error"] = 'password doesn\'t match';
                 header("Location: index.php?page=accounts&action=edit");
             }
         }
@@ -108,12 +110,13 @@ class accountsController extends http\controller
 
     public static function displaytasks()
     {
+        $userID = NULL;
         if(key_exists('userID',$_SESSION)) {
             $userID = $_SESSION['userID'];
         } else {
-            echo 'you must be logged in to view tasks';
+            $_SESSION['error'] = 'you must login to display tasks';
+            header("Location:index.php");
         }
-        $userID = $_SESSION['userID'];
         $data['account'] = accounts::findone($userID);
         $table = NULL;
         $table = todos::findTasksbyID($userID);

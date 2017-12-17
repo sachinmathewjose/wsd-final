@@ -14,6 +14,13 @@
 </head>
 <body>
 <?php
+  if(isset($_SESSION['error'])) {
+      echo '<div class="alert" style="text-align:center">';
+      echo '<span class="closebtn" onclick="this.parentElement.style.display=\'none\';">&times;</span>';
+      echo $_SESSION['error'];
+      echo '</div>';
+      unset($_SESSION['error']);
+  }
 if (isset($data)) {
     $account = $data;
 }
@@ -114,6 +121,12 @@ if (isset($data)) {
                         </div>
                         <div class="col-md-2" ><br>
                             <button style="margin:auto;display:block;" type="button" onclick="canceledit()" class="btn btn-warning" >CANCEL <span class="glyphicon glyphicon-remove"></span></button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-4 control-label"></label>
+                        <div class="col-md-4 well" ><br>
+                            <button style="margin:auto;display:block;" type="button" onclick="deleteaccount()" class="btn btn-danger" >Delete Account <span class="glyphicon glyphicon-remove"></span></button>
                         </div>
                     </div>
 

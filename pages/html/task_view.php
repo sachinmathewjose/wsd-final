@@ -19,7 +19,13 @@
 <body>
 <div class="container">
 <?php
-//this is how you print something
+  if(isset($_SESSION['error'])) {
+      echo '<div class="alert" style="text-align:center">';
+      echo '<span class="closebtn" onclick="this.parentElement.style.display=\'none\';">&times;</span>';
+      echo $_SESSION['error'];
+      echo '</div>';
+      unset($_SESSION['error']);
+  }
 if (isset($data['account'])) {
     $account = $data['account'];
  ?>
