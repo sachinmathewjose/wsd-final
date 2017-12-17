@@ -128,7 +128,12 @@
                     <button style="margin:auto;display:block;" type="submit" class="btn btn-warning" >SUBMIT <span class="glyphicon glyphicon-send"></span></button>
                 </div>
             </div>
-
+            <div class="form-group">
+                <label class="col-md-4 control-label"></label>
+                <div class="col-md-4" ><br>
+                    <p style="text-align:center">Already have an account? <a href="index.php">Login</a></p>
+                </div>
+            </div>
         </fieldset>
     </form>
 </div>
