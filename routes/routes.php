@@ -4,16 +4,15 @@ class routes
 {
     public static function getRoute($request_method,$page,$action)
     {
-        //For homepage GET
+        //Show homepage
         $routes[] = self::create('GET','show','homepage','homepageController','show');
-        //For homepage post POST
+        //Homepage post for login
         $routes[] = self::create('POST','login','homepage','homepageController','login');
         //GET METHOD index.php?page=tasks&action=show
-        $routes[] = self::create('GET','show','tasks','tasksController','show');
-        //you need to add routes for create, edit, and delete
-        //GET METHOD index.php?page=tasks&action=all
+        //$routes[] = self::create('GET','show','tasks','tasksController','show');
+        //To show all tasks page
         $routes[] = self::create('GET','all','tasks','tasksController','all');
-        //GET METHOD index.php?page=accounts&action=all
+        //To show all accounts
         $routes[] = self::create('GET','all','accounts','accountsController','all');
         //GET METHOD index.php?page=accounts&action=show
         $routes[] = self::create('GET','show','accounts','accountsController','show');
