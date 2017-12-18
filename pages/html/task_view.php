@@ -73,12 +73,14 @@ if (isset($data['edit'])) {
                     <?php if($edit) {echo "value=$edit->message";}
                     else {echo ' placeholder="Task\'s message here"';}?> >
             </div>
+            <?php if($edit) { ?>
             <div class="form-group">
                 <label for="startdate">start date:</label>
                 <input  name="startdate"  class="form-control"  type="datetime-local"
                         value='<?php if($edit) echo date("Y-m-d\TH:i", strtotime($edit->createddate)); ?>'
                         <?php if($edit) echo "readonly";?>>
             </div>
+            <?php } ?>
             <div class="form-group">
                 <label for="enddate">end date:</label>
                 <input  name="enddate"  class="form-control"  type="datetime-local"

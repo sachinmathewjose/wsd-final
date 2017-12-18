@@ -29,11 +29,17 @@ class tasksController extends http\controller
     public static function create()
     {
         $task = new todo();
+        $edit = 0;
         if(isset($_POST['id'])) {
+            $edit = 1;
             $task->id = $_POST['id'];
         }
         $task->message = $_POST['message'];
-        $task->createddate = $_POST['startdate'];
+        if(!$edit) {
+            $task->createddate = date("Y-m-d\TH:i");
+        } else {
+            $task->createddate = $_POST['startdate'];
+        }
         $task->duedate = $_POST['enddate'];
         $task->ownerid = $_SESSION['userID'];
         if (isset($_POST['isdone'])) {

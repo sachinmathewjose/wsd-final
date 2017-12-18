@@ -64,14 +64,23 @@ class accountsController extends http\controller
 //this is used to save the update form data
     public static function save() {
         $user = accounts::findOne($_SESSION['userID']);
-        $user->email = $_POST['email'];
+        $userwithEmail = accounts::findUserbyEmail($_POST['email']);
+        if ($user->email == $userwithEmail->email || $userwithEmail == FALSE) {
+            $user->email = $_POST['email'];
+        } else {
+            $_SESSION["error"] = 'Email already existing.';
+        }
         $user->fname = $_POST['fname'];
         $user->lname = $_POST['lname'];
         $user->phone = $_POST['phone'];
         $user->birthday = $_POST['birthday'];
         $user->gender = $_POST['gender'];
         $user->save();
-        $_SESSION["error"] = 'profile updated successfully';
+        if(isset($_SESSION['error'])) {
+            $_SESSION["error"] = 'profile updated successfully';
+        } else {
+            $_SESSION["error"] .= 'Email updation failed. Profile updated successfully';
+        }
         header("Location: index.php");
     }
     public static function editpassword() {
