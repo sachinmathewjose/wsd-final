@@ -14,12 +14,6 @@ class homepageController extends http\controller
         }
     }
 
-    public static function create()
-    {
-        //sachin done this in the below function. this no longer required
-//I just put a $_POST here but this is where you would put the code to add a record
-        print_r($_POST);
-    }
     //this is to login, here is where you find the account and allow login or deny.
     public static function login()
     {
@@ -41,8 +35,6 @@ class homepageController extends http\controller
     //this is to register an account i.e. insert a new account
     public static function register()
     {
-        //https://www.sitepoint.com/why-you-should-use-bcrypt-to-hash-stored-passwords/
-        //USE THE ABOVE TO SEE HOW TO USE Bcrypt
         self::getTemplate('register');
     }
 

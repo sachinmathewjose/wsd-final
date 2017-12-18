@@ -3,17 +3,6 @@
 //each page extends controller and the index.php?page=tasks causes the controller to be called
 class accountsController extends http\controller
 {
-
-    //each method in the controller is named an action.
-    //to call the show function the url is index.php?page=task&action=show
-//    public static function show()
-//    {
-//        $record = accounts::findOne($_REQUEST['id']);
-//        self::getTemplate('show_account', $record);
-//    }
-
-    //to call the show function the url is index.php?page=accounts&action=all
-
     public static function all()
     {
 
@@ -21,11 +10,6 @@ class accountsController extends http\controller
         self::getTemplate('all_accounts', $records);
 
     }
-    //to call the show function the url is called with a post to: index.php?page=task&action=create
-    //this is a function to create new tasks
-
-    //you should check the notes on the project posted in moodle for how to use active record here
-
 
     //this is the function to save the user the new user for registration
     public static function store()
@@ -65,6 +49,7 @@ class accountsController extends http\controller
     public static function save() {
         $user = accounts::findOne($_SESSION['userID']);
         $userwithEmail = accounts::findUserbyEmail($_POST['email']);
+
         if ($user->email == $userwithEmail->email || $userwithEmail == FALSE) {
             $user->email = $_POST['email'];
         } else {
@@ -83,6 +68,7 @@ class accountsController extends http\controller
         }
         header("Location: index.php");
     }
+
     public static function editpassword() {
         $user = accounts::findOne($_SESSION['userID']);
         if ($user == FALSE) {
