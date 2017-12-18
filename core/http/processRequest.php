@@ -1,6 +1,4 @@
 <?php
-
-//Using namespace here help to avoid putting namespace name in all class definition
 namespace http;
 
 class processRequest
@@ -18,7 +16,7 @@ class processRequest
     }
 
     //this function matches the request to the correct controller
-    public static function getRequestedRoute()
+    private static function getRequestedRoute()
     {
         $request_method = request::getRequestMethod();
         $page = request::getPage();

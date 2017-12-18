@@ -3,7 +3,8 @@
  * Finalized**
  */
 class Manage
-{//Functions for loading core, controller, model, collections and routes
+{
+    //Functions for loading core, controller, model, collections and routes
 
     public static function core($class)
     {

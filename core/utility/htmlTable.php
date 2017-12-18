@@ -12,7 +12,7 @@ class htmlTable
         $fieldHeadings = array_keys($fieldHeadings);
         foreach ($fieldHeadings as $heading) {
             if ($heading != 'id') {
-               $tableGen .= '<td>' . $heading . '</td>';
+                $tableGen .= '<td>' . $heading . '</td>';
             }
         }
         $tableGen .= '</tr>';
@@ -29,24 +29,4 @@ class htmlTable
         $tableGen .= '</table>';
         return $tableGen;
     }
-
-//    public static function generateTableFromOneRecord($innerArray)
-//    {
-//        $tableGen = '<table border="1" cellpadding="10"><tr>';
-//
-//        $tableGen .= '<tr>';
-//        foreach ($innerArray as $innerRow => $value) {
-//            $tableGen .= '<th>' . $innerRow . '</th>';
-//        }
-//        $tableGen .= '</tr>';
-//
-//        foreach ($innerArray as $value) {
-//            $tableGen .= '<td>' . $value . '</td>';
-//        }
-//
-//        $tableGen .= '</tr></table><hr>';
-//        return $tableGen;
-//    }
 }
-
-?>

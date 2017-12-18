@@ -1,7 +1,4 @@
 <?php
-/*
- * *Finalized
- */
 namespace http;
 
 class request
