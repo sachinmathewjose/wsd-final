@@ -50,23 +50,25 @@ class accountsController extends http\controller
         $user = accounts::findOne($_SESSION['userID']);
         $userwithEmail = accounts::findUserbyEmail($_POST['email']);
 
-        if ($user->email == $userwithEmail->email || $userwithEmail == FALSE) {
+        if ($userwithEmail == FALSE) {
             $user->email = $_POST['email'];
         } else {
-            $_SESSION["error"] = 'Email already existing.';
+            if($user->email == $userwithEmail->email) {
+                $user->email = $_POST['email'];
+            } else {
+                $_SESSION["error"] = 'Email already existing. Details not saved';
+            }
         }
         $user->fname = $_POST['fname'];
         $user->lname = $_POST['lname'];
         $user->phone = $_POST['phone'];
         $user->birthday = $_POST['birthday'];
         $user->gender = $_POST['gender'];
-        $user->save();
-        if(isset($_SESSION['error'])) {
+        if(!isset($_SESSION['error'])) {
+            $user->save();
             $_SESSION["error"] = 'profile updated successfully';
-        } else {
-            $_SESSION["error"] .= 'Email updation failed. Profile updated successfully';
         }
-        header("Location: index.php");
+        header("Location: index.php?page=accounts&action=displaytasks");
     }
 
     public static function editpassword() {
@@ -88,9 +90,9 @@ class accountsController extends http\controller
 
     public static function delete()
     {
-        $record = accounts::findOne($_REQUEST['id']);
-        $record->delete();
         if(isset($_SESSION["userID"])) {
+            $record = accounts::findOne($_SESSION['userID']);
+            $record->delete();
             unset($_SESSION["userID"]);
         }
         header("Location: index.php");

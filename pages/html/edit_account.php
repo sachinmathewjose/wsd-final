@@ -77,8 +77,8 @@ if (isset($data)) {
                                 <select name="gender" class="form-control selectpicker">
                                     <option value="">Select Gender</option>
                                     <option <?php if($account->gender == 'male')echo 'selected';?>>male</option>
-                                    <option <?php if($account->gender == 'female')echo 'selected';?>>female</option>
-                                    <option <?php if($account->gender == 'other')echo 'selected';?>>other</option>
+                                    <option <?php if($account->gender == 'Female')echo 'selected';?>>female</option>
+                                    <option <?php if($account->gender == 'Other')echo 'selected';?>>other</option>
                                 </select>
                             </div>
                         </div>

@@ -5,12 +5,12 @@
     <title>TO-DO</title>
 
     <link rel="stylesheet" href="pages/css/task_view.css">
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script src="pages/script/task_view.js"></script>
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css">
-    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-    <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+    <script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <link href="https://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
@@ -71,21 +71,23 @@ if (isset($data['edit'])) {
                 <label for="message">Message:</label>
                 <input type="text" class="form-control" id="custom_textbox" name="message"
                     <?php if($edit) {echo "value=$edit->message";}
-                    else {echo ' placeholder="Task\'s message here"';}?> >
+                    else {echo ' placeholder="Task\'s message here"';}?> required>
             </div>
             <?php if($edit) { ?>
             <div class="form-group">
                 <label for="startdate">start date:</label>
                 <input  name="startdate"  class="form-control"  type="datetime-local"
-                        value='<?php if($edit) echo date("Y-m-d\TH:i", strtotime($edit->createddate)); ?>'
+                        value='<?php date_default_timezone_set('EST');
+                        if($edit) echo date("Y-m-d\TH:i", strtotime($edit->createddate)); ?>'
                         <?php if($edit) echo "readonly";?>>
             </div>
             <?php } ?>
             <div class="form-group">
                 <label for="enddate">end date:</label>
                 <input  name="enddate"  class="form-control"  type="datetime-local"
-                        value='<?php if($edit) echo date("Y-m-d\TH:i", strtotime($edit->duedate)); ?>'
-                        <?php if($edit) echo "readonly";?> >
+                        value='<?php date_default_timezone_set('EST');
+                        if($edit) echo date("Y-m-d\TH:i", strtotime($edit->duedate)); ?>'
+                        <?php if($edit) echo "readonly";?> required>
             </div>
             <div class="checkbox">
                 <label><input type="checkbox" name="isdone" <?php if($edit){if($edit->isdone){echo "checked";} }?> >
@@ -102,13 +104,16 @@ if (isset($data['edit'])) {
                 ?>
                 <li class='list-group-item' style="padding: 10px">
                     <div class='text_holder' >
+                        <label for="message">Message:</label>
                         <input name="message" type="text" value='<?php echo $raw->message; ?>' readonly>
+                        <label for="message">start date:</label>
                         <input name="startdate" type="datetime-local"
-                               value='<?php echo date("Y-m-d\TH:i", strtotime($raw->createddate)); ?>'
-                               readonly>
+                               value='<?php date_default_timezone_set('EST'); echo
+                               date("Y-m-d\TH:i", strtotime($raw->createddate)); ?>' readonly>
+                        <label for="message">due date:</label>
                         <input name="enddate" type="datetime-local"
-                               value='<?php echo date("Y-m-d\TH:i", strtotime($raw->duedate)); ?>'
-                               readonly>
+                               value='<?php date_default_timezone_set('EST');
+                               echo date("Y-m-d\TH:i", strtotime($raw->duedate)); ?>' readonly>
                         <div class='btn-group pull-right'>
                             <button class='delete btn btn-warning' id="<?php echo $raw->id; ?>"
                                     onclick="deletetask(this.id)">Delete</button>
