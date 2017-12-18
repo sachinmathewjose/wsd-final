@@ -44,7 +44,7 @@
                         <input type="submit" id="btn-login" class="btn btn-custom btn-lg btn-block"
                                value="Log in">
                     </form>
-                    <p class="register">New user?<a href="index.php?page=accounts&action=register"
+                    <p class="register">New user?<a href="index.php?page=homepage&action=register"
                                                     data-toggle="modal" data-target=".forget-modal">Register</></p>
                     <hr>
                 </div>

@@ -6,11 +6,11 @@ class accountsController extends http\controller
 
     //each method in the controller is named an action.
     //to call the show function the url is index.php?page=task&action=show
-    public static function show()
-    {
-        $record = accounts::findOne($_REQUEST['id']);
-        self::getTemplate('show_account', $record);
-    }
+//    public static function show()
+//    {
+//        $record = accounts::findOne($_REQUEST['id']);
+//        self::getTemplate('show_account', $record);
+//    }
 
     //to call the show function the url is index.php?page=accounts&action=all
 
@@ -26,13 +26,6 @@ class accountsController extends http\controller
 
     //you should check the notes on the project posted in moodle for how to use active record here
 
-    //this is to register an account i.e. insert a new account
-    public static function register()
-    {
-        //https://www.sitepoint.com/why-you-should-use-bcrypt-to-hash-stored-passwords/
-        //USE THE ABOVE TO SEE HOW TO USE Bcrypt
-        self::getTemplate('register');
-    }
 
     //this is the function to save the user the new user for registration
     public static function store()
@@ -135,6 +128,7 @@ class accountsController extends http\controller
         } else {
             echo 'not logged in';
         }
-        header('Location: index.php?error=please+login_again');
+        $_SESSION['error'] = 'Successfully logged out';
+        header('Location: index.php');
     }
 }

@@ -18,18 +18,14 @@ class tasksController extends http\controller
 //        self::getTemplate('show_task', $record);
 //    }
 
-    //to call the show function the url is index.php?page=task&action=all
+    //for showing all the todo items in one page
     public static function all()
     {
         $records = todos::findAll();
         self::getTemplate('all_tasks', $records);
     }
 
-    //to call the show function the url is called with a post to: index.php?page=task&action=create
     //this is a function to create new tasks
-
-    //you should check the notes on the project posted in moodle for how to use active record here
-
     public static function create()
     {
         $task = new todo();
@@ -46,8 +42,8 @@ class tasksController extends http\controller
         else {
             $task->isdone = 0;
         }
-        $task->save();
-        if (isset($task->id)) {
+        $retID = $task->save();
+        if (isset($retID)) {
             header("Location: index.php?page=accounts&action=displaytasks");
         }
         else{
@@ -55,32 +51,30 @@ class tasksController extends http\controller
         }
     }
 
-//    //this is the function to view edit record form
-//    public static function edit()
-//    {
-//        $id =$_REQUEST['id'];
-//        header("Location:index.php?page=accounts&action=displaytasks&id=$id");
-//    }
-    //this would be for the post for sending the task edit form
-    public static function store()
+    //this is the function to view edit record form
+    public static function edit()
     {
-
-        $record = todos::findOne($_REQUEST['id']);
-        $record->body = $_REQUEST['body'];
-        $record->save();
-        print_r($_POST);
-
+        $id =$_REQUEST['id'];
+        header("Location:index.php?page=accounts&action=displaytasks&id=$id");
     }
 
-    public static function save() {
-        //session_start();
-        $task = new todo();
 
-        $task->body = $_POST['body'];
-        $task->ownerid = $_SESSION['userID'];
-        $task->save();
-
-    }
+//    //this would be for the post for sending the task edit form
+//    public static function store()
+//    {
+//        $record = todos::findOne($_REQUEST['id']);
+//        $record->body = $_REQUEST['body'];
+//        $record->save();
+//        print_r($_POST);
+//    }
+//
+//    public static function save() {
+//        //session_start();
+//        $task = new todo();
+//        $task->body = $_POST['body'];
+//        $task->ownerid = $_SESSION['userID'];
+//        $task->save();
+//    }
 
     //this is the delete function.  You actually return the edit form and then there should be 2 forms on that.
     //One form is the todo and the other is just for the delete button
@@ -92,5 +86,4 @@ class tasksController extends http\controller
         }
         header("Location:index.php?page=accounts&action=displaytasks");
     }
-
 }

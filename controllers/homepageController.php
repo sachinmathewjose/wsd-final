@@ -38,4 +38,12 @@ class homepageController extends http\controller
         }
     }
 
+    //this is to register an account i.e. insert a new account
+    public static function register()
+    {
+        //https://www.sitepoint.com/why-you-should-use-bcrypt-to-hash-stored-passwords/
+        //USE THE ABOVE TO SEE HOW TO USE Bcrypt
+        self::getTemplate('register');
+    }
+
 }

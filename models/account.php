@@ -15,7 +15,7 @@ final class account extends \database\model
     public static function getTablename()
     {
         $tableName = 'accounts';
-        return $tableName;
+        return $tableName;    //or return 'accounts'
     }
 
     //to find a users tasks you need to create a method here.  Use $this->id to get the usersID For the query
