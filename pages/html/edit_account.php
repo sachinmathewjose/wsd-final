@@ -76,9 +76,9 @@ if (isset($data)) {
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
                                 <select name="gender" class="form-control selectpicker">
                                     <option value="">Select Gender</option>
-                                    <option <?php if($account->gender == 'male')echo 'selected';?>>male</option>
-                                    <option <?php if($account->gender == 'Female')echo 'selected';?>>female</option>
-                                    <option <?php if($account->gender == 'Other')echo 'selected';?>>other</option>
+                                    <option <?php if($account->gender == 'Male')echo 'selected';?>>Male</option>
+                                    <option <?php if($account->gender == 'Female')echo 'selected';?>>Female</option>
+                                    <option <?php if($account->gender == 'Other')echo 'selected';?>>Other</option>
                                 </select>
                             </div>
                         </div>
